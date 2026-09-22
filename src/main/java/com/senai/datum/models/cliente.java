@@ -1,0 +1,131 @@
+package com.senai.datum.models;
+
+import java.math.BigDecimal;
+
+import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity; // biblioteca para persistencia de dados
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity 
+@Table(name="cliente") // Cria tabela chamada cliente
+public class cliente {
+
+    @Id 
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name= "id_cliente")
+    private  Long idCliente; // id do cliente
+
+    // Relacionamento para consultor, entao um consultor pode ter mais de um cliente
+    @ManyToOne 
+    @JoinColumn (name= "id_consultor", nullable = false)
+    private  consultor consultor; // Atributo consultor do tipo consultor
+
+    @Column(name = "nome_empresa",nullable = false,length = 180)
+    private  String nomeEmpresa;
+
+    @Column (name="segmento",nullable = false, length = 100)
+    private String segmento;
+
+
+    @Column(
+        name = "faturamento_anual",
+        nullable = false,
+        precision = 15,
+        scale=2
+    )
+
+    private BigDecimal faturamentoAnual;
+
+    @Enumerated(EnumType.STRING)
+    @Column (name = "nivel",nullable = false)
+    private nivelCliente nivel;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="status",nullable = false)
+    private statusCliente status;
+
+    // Cria um construtor vazio para cliente
+
+    public cliente(){
+
+    }
+
+    public cliente(
+        consultor consultor,
+        String nomeEmpresa,
+        String segmento,
+        BigDecimal faturamentoAnual,
+        nivelCliente nivel,
+        statusCliente status){
+        this.consultor = consultor;
+        this.nomeEmpresa = nomeEmpresa;
+        this.segmento = segmento;
+        this.faturamentoAnual = faturamentoAnual;
+        this.nivel = nivel;
+        this.status = status;
+    }
+
+
+    // Cria função para pegar o ID
+    public Long getIdCliente(){
+        return idCliente;
+    }
+
+    // Cria função para pegar o consultor
+    public consultor getConsultor(){
+        return consultor;
+    }
+
+    // Função para setar o consultor
+    public void setConsultor(consultor consultor){
+        this.consultor = consultor;
+    }
+
+// Função para pegar o nome da empresa
+public String getNomeEmpresa(){
+    return nomeEmpresa;
+}
+
+// Função para setar o nome da empresa
+public void setNomeEmpresa(String nomeEmpresa){
+    this.nomeEmpresa = nomeEmpresa;
+}
+
+// Função para pegar o segmento
+public String getSegmento(){
+    return segmento;
+}
+
+// Função para pegar o faturamento
+
+public BigDecimal getFaturamentoAnual(){
+    return faturamentoAnual;
+}
+
+
+public void setFaturamentoAnual(BigDecimal faturamentoAnual){
+    this.faturamentoAnual = faturamentoAnual;
+}
+
+public  void setNivel(nivelCliente nivel){
+    this.nivel = nivel;
+}
+
+
+public statusCliente getStatus(){
+    return status;
+}
+
+public void setStatus(statusCliente status){
+    this.status = status;
+}
+    
+}
