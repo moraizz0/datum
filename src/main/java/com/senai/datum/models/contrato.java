@@ -52,6 +52,7 @@ public class contrato {
     @Column(name="status",nullable = false)
     private statusCliente status;
 
+<<<<<<< HEAD
 public contrato(){
 }
     public contrato(
@@ -61,6 +62,12 @@ public contrato(){
         BigDecimal faturamentoAnual,
         nivelCliente nivel,
         statusCliente status){
+=======
+    public contrato() {
+    }
+
+    public contrato(cliente cliente, String nomeEmpresa, String segmento, BigDecimal faturamentoAnual, nivelCliente nivel, statusCliente status) {
+>>>>>>> fd68bcc68e847b80f3d106b274e2632755db09c3
         this.cliente = cliente;
         this.nomeEmpresa = nomeEmpresa;
         this.segmento = segmento;
@@ -69,8 +76,8 @@ public contrato(){
         this.status = status;
     }
 
-
     // Cria função para pegar o ID
+<<<<<<< HEAD
     public Long getIdContrato(){
         return idContrato;
     }
@@ -82,6 +89,17 @@ public contrato(){
 
     // Função para setar o cliente
     public void setCliente(cliente cliente){
+=======
+    public Long getIdContrato() {
+        return idContrato;
+    }
+
+    public cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(cliente cliente) {
+>>>>>>> fd68bcc68e847b80f3d106b274e2632755db09c3
         this.cliente = cliente;
     }
 
@@ -90,6 +108,7 @@ public contrato(){
         return nomeEmpresa;
     }
 
+<<<<<<< HEAD
 // Função para setar o nome da empresa
 public void setNomeEmpresa(String nomeEmpresa){
     this.nomeEmpresa = nomeEmpresa;
@@ -123,4 +142,40 @@ public statusCliente getStatus(){
 public void setStatus(statusCliente status){
     this.status = status;
 }
+=======
+    // Função para setar o nome da empresa
+    public void setNomeEmpresa(String nomeEmpresa){
+        this.nomeEmpresa = nomeEmpresa;
+    }
+
+    // Função para pegar o segmento
+    public String getSegmento(){
+        return segmento;
+    }
+
+    // Função para pegar o faturamento
+    public BigDecimal getFaturamentoAnual(){
+        return faturamentoAnual;
+    }
+
+    public void setFaturamentoAnual(BigDecimal faturamentoAnual){
+        this.faturamentoAnual = faturamentoAnual;
+    }
+
+    public nivelCliente getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(nivelCliente nivel){
+        this.nivel = nivel;
+    }
+
+    public statusCliente getStatus(){
+        return status;
+    }
+
+    public void setStatus(statusCliente status){
+        this.status = status;
+    }
+>>>>>>> fd68bcc68e847b80f3d106b274e2632755db09c3
 }
