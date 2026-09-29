@@ -52,16 +52,16 @@ public class contrato {
     @Column(name="status",nullable = false)
     private statusCliente status;
 
-public class contrato (){
+public contrato(){
 }
-    public cliente(
-        consultor consultor,
+    public contrato(
+        cliente cliente,
         String nomeEmpresa,
         String segmento,
         BigDecimal faturamentoAnual,
         nivelCliente nivel,
         statusCliente status){
-        this.consultor = consultor;
+        this.cliente = cliente;
         this.nomeEmpresa = nomeEmpresa;
         this.segmento = segmento;
         this.faturamentoAnual = faturamentoAnual;
@@ -71,24 +71,24 @@ public class contrato (){
 
 
     // Cria função para pegar o ID
-    public Long getIdCliente(){
-        return idCliente;
+    public Long getIdContrato(){
+        return idContrato;
     }
 
-    // Cria função para pegar o consultor
-    public consultor getConsultor(){
-        return consultor;
+    // Cria função para pegar o cliente
+    public cliente getCliente(){
+        return cliente;
     }
 
-    // Função para setar o consultor
-    public void setConsultor(consultor consultor){
-        this.consultor = consultor;
+    // Função para setar o cliente
+    public void setCliente(cliente cliente){
+        this.cliente = cliente;
     }
 
-// Função para pegar o nome da empresa
-public String getNomeEmpresa(){
-    return nomeEmpresa;
-}
+    // Função para pegar o nome da empresa
+    public String getNomeEmpresa(){
+        return nomeEmpresa;
+    }
 
 // Função para setar o nome da empresa
 public void setNomeEmpresa(String nomeEmpresa){

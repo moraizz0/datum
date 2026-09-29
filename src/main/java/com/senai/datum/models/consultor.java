@@ -1,8 +1,9 @@
 package com.senai.datum.models;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.senai.datum.models.cliente;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +30,8 @@ private  String nome;
 @Column (name = "email", nullable = false, unique = true, length = 150)
 private  String email;
 
+@Column (name = "senha", nullable = false, unique = true, length = 150)
+private  String senha;
 
 @Column (name = "telefone", length = 30)
 private  String telefone;
@@ -72,6 +75,10 @@ public String getEmail(){
     return  email;
 }
 
+public String getSenha(){
+    return senha;
+}
+
 public void setEmail(String email){
     this.email = email;
 }
@@ -91,6 +98,4 @@ public List<cliente> getClientes(){
 public  void setClientes(List<cliente>clientes){
     this.clientes = clientes;
 }
-    
 }
-
