@@ -1,16 +1,16 @@
-package com.senai.datum.controller;
+package com.senai.aula08.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import com.senai.aula08.models.Consultor;
+import com.senai.aula08.service.ConsultorService;
 
 import java.util.List;
 
-import com.senai.datum.models.consultor;
-import com.senai.datum.service.consultorService;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController // indica que a classe consultor controller irá receber as requisições http
 @RequestMapping("/consultores") // cria a rota consultores
-public class consultorController {
+public class ConsultorController {
 
     // Cria a variavel ConsultorService 
     private final ConsultorService service;
 
     // Cria o construtor
-    public consultorController(
+    public ConsultorController(
         ConsultorService service){
             this.service = service;
         }
@@ -36,8 +36,8 @@ public class consultorController {
 // =======
 
 @PostMapping
-public consultor criar(
-    @RequestBody consultor consultor){
+public Consultor criar(
+    @RequestBody Consultor consultor){
         return service.criar(consultor);
     }
 
@@ -48,7 +48,7 @@ public consultor criar(
 //
 
 @PostMapping("/login")
-public consultor login(@RequestBody consultor consultor){
+public Consultor login(@RequestBody Consultor consultor){
 
     return service.login(consultor.getEmail(), consultor.getSenha());
 
@@ -57,30 +57,35 @@ public consultor login(@RequestBody consultor consultor){
 //====
 // READ
 
-@GetMapping
-public List<consultor> listar(){
+@GetMapping 
+public List<Consultor> listar(){
     return service.listar();
 }
+
 
 // === 
 // READ por id
 // ====
 
+
 @GetMapping("/{id}")
-public consultor buscar(
+public Consultor buscar(
     @PathVariable  Long id){
         return service.buscarPorId(id);
     }
+
+
 
 // ==== 
 // UPDATE
 // ====
 
 @PutMapping("/{id}")
-public consultor atualizar(
-    @PathVariable Long id, @RequestBody consultor consultor){
+public Consultor atualizar(
+    @PathVariable Long id, @RequestBody Consultor consultor){
         return  service.atualizar(id, consultor);
     }
+
 
 // ==== 
 // DELETE
@@ -90,6 +95,12 @@ public consultor atualizar(
 public void excluir(@PathVariable Long id){
     service.excluir(id);
 }
+
+
+
+
+
+
     
 }
 

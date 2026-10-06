@@ -1,28 +1,30 @@
-package com.senai.datum.service;
+package com.senai.aula08.service;
 
-import javax.management.RuntimeErrorException;
+import java.util.List;
+
+
 
 import org.springframework.stereotype.Service; // Biblioteca que permite colocar a anotação service
 
-import com.senai.datum.models.consultor;
-import com.senai.datum.repository.consultorRepository;
+import com.senai.aula08.models.Consultor;
+import com.senai.aula08.repository.ConsultorRepository;
 
 import jakarta.transaction.Transactional;
 
 // Anotação de service é onde vai ter as regras de negocio
 
 @Service 
-public class consultorService {
+public class ConsultorService {
 
     // Cria a variavel Consultor repository
 
-    private final consultorRepository repository; // cria a variavel repository que permite manipular o banco de dados
+    private final ConsultorRepository repository; // cria a variavel repository que permite manipular o banco de dados
 
 
     // Cria o construtor
 
-    public consultorService(
-        consultorRepository repository){
+    public ConsultorService(
+        ConsultorRepository repository){
             this.repository = repository;
         }
 
@@ -32,7 +34,7 @@ public class consultorService {
     // ======
 
     @Transactional 
-    public consultor criar(consultor consultor){
+    public Consultor criar(Consultor consultor){
         if(consultor.getNome() == null || consultor.getNome().isBlank()){
             throw new RuntimeException(
                 "Nome é obrigatório !"
@@ -69,12 +71,12 @@ public class consultorService {
 
 
 // Login 
-    
+
 // Cria a função
 
-public consultor login(String email, String senha){
+public Consultor login(String email, String senha){
 
-    consultor consultor = repository.findByEmail(email).orElseThrow(()->new RuntimeException("Consultor não encontrado"));
+    Consultor consultor = repository.findByEmail(email).orElseThrow(()->new RuntimeException("Consultor não encontrado"));
 
 
     // Validação
@@ -89,30 +91,34 @@ public consultor login(String email, String senha){
 
 // READ - todos
 
-public List<consultor> listar(){
+public List<Consultor> listar(){
     return repository.findAll();
 }
 
 // READ por ID
 
-public consultor buscarPorId(Long id){
-    return repository.f
+public Consultor buscarPorId(Long id){
+    return repository.findById(id).orElseThrow(()->new RuntimeException("Consultor não encontrado"));
 }
+
 
 // UPDATE
 
 @Transactional 
-public consultor atualizar(
-    Long id, consultor dados
+public Consultor atualizar(
+    Long id, Consultor dados
 ){
 
-    consultor consultor = buscarPorId(id);
+    Consultor consultor = buscarPorId(id);
 
 
     consultor.setNome(dados.getNome()); // pega o nome do consultor
 
 
     consultor.setEmail(dados.getEmail());
+
+
+    consultor.setSenha(dados.getSenha());
 
 
     return  repository.save(consultor);
@@ -123,10 +129,10 @@ public consultor atualizar(
 
 @Transactional 
 public void excluir(Long id){
-    consultor consultor = buscarPorId(id);
+    Consultor consultor = buscarPorId(id);
 
     repository.deleteById(
         consultor.getIdLong() );
 }
-
+    
 }

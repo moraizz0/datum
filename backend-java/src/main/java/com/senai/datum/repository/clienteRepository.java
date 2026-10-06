@@ -1,9 +1,9 @@
-package com.senai.datum.repository;
+package com.senai.aula08.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.senai.datum.models.cliente;
+import com.senai.aula08.models.Cliente;
 
-public interface clienteRepository extends JpaRepository<cliente, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente,Long> {
     
 }

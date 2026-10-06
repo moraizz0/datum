@@ -1,9 +1,7 @@
-package com.senai.datum.models;
+package com.senai.aula08.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.senai.datum.models.cliente;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +14,7 @@ import jakarta.persistence.Table;
 // Cria tabela para relacionar com o banco de dados
 @Entity 
 @Table (name="consultor") // cria tabela do consultor
-public class consultor {
+public class Consultor {
 @Id 
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 @Column (name = "id_consultor")
@@ -38,20 +36,21 @@ private  String telefone;
 
 // Relacionamento
 @OneToMany (mappedBy = "consultor")
-private List<cliente> clientes = new ArrayList<>(); // Lista, pois o consultor pode ter varios clientes
+private List<Cliente> clientes = new ArrayList<>(); // Lista, pois o consultor pode ter varios clientes
 
 // Cria o construtor cliente vazio, pois posso criar um cliente inicial sem passar parametros quando cria
 
-public consultor(){
+public Consultor(){
 
 }
 
 // Cria outro construtor com parametros para iniciar
 
-public consultor(String nome, String email, String telefone){
+public Consultor(String nome, String email, String senha,String telefone){
     this.nome = nome;
     this.email = email;
     this.telefone = telefone;
+    this.senha = senha;
 }
 
 public Long getIdLong(){
@@ -75,10 +74,12 @@ public String getEmail(){
     return  email;
 }
 
+public void setSenha(String senha){
+    this.senha = senha;
+}
 public String getSenha(){
     return senha;
 }
-
 public void setEmail(String email){
     this.email = email;
 }
@@ -87,15 +88,16 @@ public String getTelefone(){
     return telefone;
 }
 
-public  void setTelefone(){
+public  void setTelefone(String telefone){
     this.telefone = telefone;
 }
 
-public List<cliente> getClientes(){
+public List<Cliente> getClientes(){
     return clientes;
 }
 
-public  void setClientes(List<cliente>clientes){
+public  void setClientes(List<Cliente>clientes){
     this.clientes = clientes;
 }
+    
 }

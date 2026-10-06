@@ -1,26 +1,26 @@
-package com.senai.datum.service;
+package com.senai.aula08.service;
 
 import org.springframework.stereotype.Service;
 
-import com.senai.datum.models.cliente;
-import com.senai.datum.models.consultor;
-import com.senai.datum.repository.clienteRepository;
-import com.senai.datum.repository.consultorRepository;
+import com.senai.aula08.models.Cliente;
+import com.senai.aula08.models.Consultor;
+import com.senai.aula08.repository.ClienteRepository;
+import com.senai.aula08.repository.ConsultorRepository;
 
 import jakarta.transaction.Transactional;
 
 @Service 
-public class clienteService {
-    
+public class ClienteService {
+
     // Cria variaveis clienterepository e consultorrepository
 
-    private  final clienteRepository clienteRepository;
-    private  final consultorRepository consultorRepository;
+    private  final ClienteRepository clienteRepository;
+    private  final ConsultorRepository consultorRepository;
 
     // Cria o construtor
-    public clienteService(
-        clienteRepository clienteRepository,
-        consultorRepository consultorRepository
+    public ClienteService(
+        ClienteRepository clienteRepository,
+        ConsultorRepository consultorRepository
     ){
         this.clienteRepository = clienteRepository;
         this.consultorRepository = consultorRepository;
@@ -31,11 +31,11 @@ public class clienteService {
     // Create 
 
     @Transactional 
-    public cliente criar(Long idConsultor, cliente cliente){
+    public Cliente criar(Long idConsultor, Cliente cliente){
 
         // Primeiro verifica se o consultor existe
 
-        consultor consultor = consultorRepository.findById(idConsultor).orElseThrow(
+        Consultor consultor = consultorRepository.findById(idConsultor).orElseThrow(
             ()->new RuntimeException("Consultor não encontrado")
         );
 
@@ -74,18 +74,16 @@ public class clienteService {
 
     // Read por id
 
-    public 
-    cliente buscarPorId(Long id){
-        return clienteRepository.findById(id).orElseThrow(
-            ()-> new RuntimeException("Cliente não encontrado")
-        );
+    public Cliente buscarporId(Long id){
+        return clienteRepository.findById(id).orElseThrow(()->new RuntimeException("Cliente não encontrado"));
     }
 
-        // Update
+
+    // Update
 
     @Transactional 
-    public  cliente atualizar(Long id, cliente dados){
-        cliente cliente = buscarporId(id);
+    public  Cliente atualizar(Long id, Cliente dados){
+        Cliente cliente = buscarporId(id);
 
         cliente.setNomeEmpresa(dados.getNomeEmpresa());
 
@@ -102,12 +100,14 @@ public class clienteService {
         return  clienteRepository.save(cliente);
     }
 
+
     // Delete 
 
     @Transactional 
     public void excluir(Long id){
-        cliente cliente = buscarporId(id);
+        Cliente cliente = buscarporId(id);
 
         clienteRepository.deleteById(cliente.getIdCliente());
     }
+    
 }

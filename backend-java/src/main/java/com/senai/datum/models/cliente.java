@@ -1,4 +1,4 @@
-package com.senai.datum.models;
+package com.senai.aula08.models;
 
 import java.math.BigDecimal;
 
@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity 
 @Table(name="cliente") // Cria tabela chamada cliente
-public class cliente {
+public class Cliente {
 
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class cliente {
     // Relacionamento para consultor, entao um consultor pode ter mais de um cliente
     @ManyToOne 
     @JoinColumn (name= "id_consultor", nullable = false)
-    private  consultor consultor; // Atributo consultor do tipo consultor
+    private  Consultor consultor; // Atributo consultor do tipo consultor
 
     @Column(name = "nome_empresa",nullable = false,length = 180)
     private  String nomeEmpresa;
@@ -46,25 +46,25 @@ public class cliente {
 
     @Enumerated(EnumType.STRING)
     @Column (name = "nivel",nullable = false)
-    private nivelCliente nivel;
+    private NivelCliente nivel;
 
     @Enumerated(EnumType.STRING)
     @Column(name="status",nullable = false)
-    private statusCliente status;
+    private StatusCliente status;
 
     // Cria um construtor vazio para cliente
 
-    public cliente(){
+    public Cliente(){
 
     }
 
-    public cliente(
-        consultor consultor,
+    public Cliente(
+        Consultor consultor,
         String nomeEmpresa,
         String segmento,
         BigDecimal faturamentoAnual,
-        nivelCliente nivel,
-        statusCliente status){
+        NivelCliente nivel,
+        StatusCliente status){
         this.consultor = consultor;
         this.nomeEmpresa = nomeEmpresa;
         this.segmento = segmento;
@@ -80,12 +80,12 @@ public class cliente {
     }
 
     // Cria função para pegar o consultor
-    public consultor getConsultor(){
+    public Consultor getConsultor(){
         return consultor;
     }
-
+    
     // Função para setar o consultor
-    public void setConsultor(consultor consultor){
+    public  void setConsultor(Consultor consultor){
         this.consultor = consultor;
     }
 
@@ -95,13 +95,19 @@ public String getNomeEmpresa(){
 }
 
 // Função para setar o nome da empresa
+
 public void setNomeEmpresa(String nomeEmpresa){
     this.nomeEmpresa = nomeEmpresa;
 }
 
 // Função para pegar o segmento
+
 public String getSegmento(){
-    return segmento;
+   return  segmento;
+}
+
+public  void setSegmento(String segmento){
+    this.segmento = segmento;
 }
 
 // Função para pegar o faturamento
@@ -115,17 +121,28 @@ public void setFaturamentoAnual(BigDecimal faturamentoAnual){
     this.faturamentoAnual = faturamentoAnual;
 }
 
-public  void setNivel(nivelCliente nivel){
+
+
+public  void setNivel(NivelCliente nivel){
     this.nivel = nivel;
 }
 
+public NivelCliente getNivel(){
+    return  nivel;
 
-public statusCliente getStatus(){
+}
+
+public StatusCliente getStatus(){
     return status;
 }
 
-public void setStatus(statusCliente status){
+public void setStatus(StatusCliente status){
     this.status = status;
 }
+
+
+
+
+
     
 }

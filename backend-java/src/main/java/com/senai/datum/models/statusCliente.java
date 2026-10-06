@@ -1,6 +1,6 @@
-package com.senai.datum.models;
+package com.senai.aula08.models;
 
-public enum statusCliente {
+public enum StatusCliente {
     ATIVO,
     INATIVO
 }
