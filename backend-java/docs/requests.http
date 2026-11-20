@@ -1,0 +1,65 @@
+### Testes da API no VS Code (extensão "REST Client", de Huachao Mao).
+### Clique em "Send Request" acima de cada bloco. Execute na ordem.
+
+@host = http://localhost:8080
+@token = COLE_AQUI_O_TOKEN_DO_LOGIN
+
+### 1) Saúde da API (deve devolver {"status":"ok"})
+GET {{host}}/api/health
+
+### 2) Cadastro (fica PENDENTE até o admin aprovar) -> 201
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{ "nome": "Maria Silva", "email": "maria@email.com", "senha": "Senha1234" }
+
+### 3) Login da Maria ainda pendente -> 403
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "maria@email.com", "senha": "Senha1234" }
+
+### 4) Login do ADMIN (e-mail e senha do .env) -> 200 com token. Copie o "token" para a variável @token
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "admin@datum.local", "senha": "SENHA_DO_ADMIN_NO_ENV" }
+
+### 5) Quem sou eu
+GET {{host}}/api/auth/me
+Authorization: Bearer {{token}}
+
+### 6) Admin: listar pendentes
+GET {{host}}/api/admin/usuarios?status=PENDENTE
+Authorization: Bearer {{token}}
+
+### 7) Admin: aprovar o usuário de id 2 (troque o id)
+PATCH {{host}}/api/admin/usuarios/2/status
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "status": "APROVADO" }
+
+### 8) Upload: 1 linha válida, 1 com erro (nome vazio), 1 com avisos -> 201
+POST {{host}}/api/uploads/validadas
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "arquivoNome": "clientes.xlsx",
+  "descartadas": 0,
+  "linhas": [
+    { "numeroLinha": 2, "codigoCliente": "CTI001", "nomeCliente": "Empresa Alfa", "consultor": "Ana Souza",
+      "segmento": "Indústria", "nivelCliente": "A", "faturamentoAnual": "1850000",
+      "servicosContratados": "Internet; Telefonia", "dataContratacao": "05/03/2024", "cidade": "Campinas", "uf": "SP" },
+    { "numeroLinha": 3, "codigoCliente": "CTI002", "nomeCliente": "", "consultor": "Ana Souza",
+      "segmento": "Comércio", "nivelCliente": "B", "faturamentoAnual": "200000",
+      "servicosContratados": "Internet", "dataContratacao": "10/01/2023", "cidade": "Sumaré", "uf": "SP" },
+    { "numeroLinha": 4, "codigoCliente": "CTI003", "nomeCliente": "Beta Ltda", "consultor": "JOÃO lima",
+      "segmento": "ind.", "nivelCliente": "b", "faturamentoAnual": "R$ 450.000,00",
+      "servicosContratados": "Backup", "dataContratacao": "2022-07-15", "cidade": "", "uf": "sp" }
+  ]
+}
+
+### 9) Sem token em rota protegida -> 401
+GET {{host}}/api/auth/me

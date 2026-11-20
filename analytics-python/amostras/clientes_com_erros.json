@@ -1,0 +1,122 @@
+[
+  {
+    "codigoCliente": "CTI001",
+    "nomeCliente": "Empresa CTI001",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": 1850000,
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI002",
+    "nomeCliente": "Empresa CTI002",
+    "consultor": "carlos  lima",
+    "segmento": "Comercio",
+    "nivelCliente": "b",
+    "faturamentoAnual": "R$ 420.000,50",
+    "servicosContratados": "Backup;Firewall",
+    "dataContratacao": "30/01/2025",
+    "cidade": "Hortolândia",
+    "uf": "sp"
+  },
+  {
+    "codigoCliente": "CTI003",
+    "nomeCliente": "",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": 1850000,
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "cti001",
+    "nomeCliente": "Empresa cti001",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": 1850000,
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI005",
+    "nomeCliente": "Empresa CTI005",
+    "consultor": "Ana Souza",
+    "segmento": "IND.",
+    "nivelCliente": "A",
+    "faturamentoAnual": "1.200.000,00",
+    "servicosContratados": "MPLS ; Cloud ;; mpls",
+    "dataContratacao": "2025-02-10",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI006",
+    "nomeCliente": "Empresa CTI006",
+    "consultor": "Ana Souza",
+    "segmento": "Agro",
+    "nivelCliente": "D",
+    "faturamentoAnual": "abc",
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "31/02/2025",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI007",
+    "nomeCliente": "Empresa CTI007",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": -100,
+    "servicosContratados": " ; ",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI008",
+    "nomeCliente": "Empresa CTI008",
+    "consultor": "Ana Souza",
+    "segmento": "TI",
+    "nivelCliente": "C",
+    "faturamentoAnual": 980000.5,
+    "servicosContratados": "Link Empresarial",
+    "dataContratacao": 45700,
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI 9!",
+    "nomeCliente": "Empresa CTI 9!",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": 1850000,
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  },
+  {
+    "codigoCliente": "CTI010",
+    "nomeCliente": "Empresa CTI001",
+    "consultor": "Ana Souza",
+    "segmento": "Indústria",
+    "nivelCliente": "A",
+    "faturamentoAnual": 1850000,
+    "servicosContratados": "Internet Dedicada;Firewall",
+    "dataContratacao": "2025-01-15",
+    "cidade": "Campinas",
+    "uf": "SP"
+  }
+]
