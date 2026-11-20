@@ -22,7 +22,7 @@ function dataParaTexto(d) {
 function celulaParaTexto(v) {
   if (v instanceof Date) return dataParaTexto(v)
   if (v === null || v === undefined) return ''
-  return String(v).trim()
+  return String(v) // sem trim: o espaço sobrando é um dos problemas que a validação precisa enxergar
 }
 
 /**
@@ -48,7 +48,7 @@ export async function lerPlanilha(arquivo) {
   const pega = (linha, coluna) => (coluna in posicao ? celulaParaTexto(linha[posicao[coluna]]) : '')
   const linhas = []
   matriz.slice(1).forEach((l, i) => {
-    if (l.every((c) => celulaParaTexto(c) === '')) return // ignora linha totalmente vazia
+    if (l.every((c) => celulaParaTexto(c).trim() === '')) return // ignora linha totalmente vazia
     linhas.push({
       numeroLinha: i + 2,
       codigoCliente: pega(l, 'codigo_cliente'),
@@ -60,7 +60,8 @@ export async function lerPlanilha(arquivo) {
       servicosContratados: pega(l, 'servicos_contratados'),
       dataContratacao: pega(l, 'data_contratacao'),
       cidade: pega(l, 'cidade'),
-      uf: pega(l, 'uf')
+      uf: pega(l, 'uf'),
+      email: pega(l, 'email') // coluna opcional: só é validada se existir na planilha
     })
   })
   return { linhas, faltando: [] }
