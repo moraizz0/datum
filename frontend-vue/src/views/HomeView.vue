@@ -1,9 +1,5 @@
 <script setup>
-import ThemeToggle from '@/components/ThemeToggle.vue'
 
-const barras = [40, 62, 48, 82, 58, 72, 45]
-const dias = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
-const kpis = [['Clientes ativos', '1.250'], ['Faturamento médio', 'R$ 450 mil'], ['Serviços ativos', '3.420']]
 const recursos = [
   { n: '01', titulo: 'Envie a planilha', texto: 'Arraste seu arquivo Excel ou CSV e deixe o Datum ler tudo por você.' },
   { n: '02', titulo: 'Dados validados', texto: 'Erros de digitação e inconsistências são encontrados e padronizados antes de salvar.' },
@@ -16,9 +12,6 @@ const recursos = [
     <header class="border-b border-slate-200 bg-white dark:border-white/10 dark:bg-ink-900">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <span class="text-lg font-bold tracking-[0.2em] text-ink-900 dark:text-white">DATUM</span>
-        <nav class="hidden gap-8 text-sm text-slate-600 md:flex dark:text-slate-300">
-          <a href="#recursos" class="hover:text-slate-900 dark:hover:text-white">Recursos</a>
-        </nav>
         <div class="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <RouterLink to="/login" class="btn-ghost !py-2.5 sm:!py-2">Entrar</RouterLink>
@@ -41,25 +34,6 @@ const recursos = [
         <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <RouterLink to="/cadastro" class="btn-primary w-full px-7 sm:w-auto">Comece agora</RouterLink>
           <RouterLink to="/login" class="btn-ghost w-full !py-3 sm:w-auto">Já tenho conta</RouterLink>
-        </div>
-      </section>
-
-      <!-- prévia do dashboard (decorativa) -->
-      <section class="card mx-auto mt-14 max-w-4xl !p-4 sm:!p-6" aria-hidden="true">
-        <div class="grid gap-3 sm:grid-cols-3">
-          <div v-for="k in kpis" :key="k[0]" class="rounded-xl bg-slate-50 p-4 dark:bg-white/5">
-            <p class="text-xs text-slate-500 dark:text-slate-400">{{ k[0] }}</p>
-            <p class="mt-1 text-2xl font-bold text-ink-900 dark:text-white">{{ k[1] }}</p>
-          </div>
-        </div>
-        <div class="mt-3 rounded-xl bg-slate-50 p-4 dark:bg-white/5">
-          <p class="text-sm font-semibold text-ink-900 dark:text-white">Faturamento por dia</p>
-          <div class="mt-4 flex h-40 items-end justify-between gap-3">
-            <div v-for="(b, i) in barras" :key="i" class="flex h-full flex-1 flex-col items-center justify-end gap-2">
-              <div class="w-full rounded-t-md bg-brand-600" :style="{ height: b + '%' }"></div>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400">{{ dias[i] }}</span>
-            </div>
-          </div>
         </div>
       </section>
 
